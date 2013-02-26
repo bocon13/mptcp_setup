@@ -10,7 +10,7 @@ sudo python setup.py develop
 cd ~/
 git clone git://github.com/brandonheller/riplpox.git
 cd riplpox
-git checkout temp/hashed_fix
+#git checkout temp/hashed_fix
 sudo python setup.py develop
 
 # Building POX:

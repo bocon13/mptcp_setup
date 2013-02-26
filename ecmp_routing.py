@@ -33,7 +33,7 @@ def FatTreeNet(k=4, bw=100, cpu=-1,  queue=100):
     global opts
 
     #pox_c = Popen("~/pox/pox.py --no-cli riplpox.riplpox --topo=ft,%s --routing=st --mode=proactive 1> pox.out 2> pox.out" % (k), shell=True)
-    pox_c = Popen("~/pox/pox.py riplpox.riplpox --topo=ft,%s --routing=st --mode=proactive 1> pox.out 2> pox.out" % (k), shell=True)
+    pox_c = Popen("~/pox/pox.py riplpox.riplpox --topo=ft,%s --routing=hashed --mode=reactive  1> pox.out 2> pox.out" % (k), shell=True)
 
     topo = FatTreeTopo(k, speed=bw/1000.)
     #host = custom(CPULimitedHost, cpu=cpu)
