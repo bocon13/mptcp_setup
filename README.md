@@ -14,7 +14,7 @@ dir: mininet-tests/mptcp/
 
 == Running a throughput test:
 
-sudo ./mptcp_2hNs.py --bw 10 --mptcp -n 2
+sudo ./mptcp_test.py --bw 10 --mptcp -n 2
 
 This script configures the routing tables automatically, and should 
 yield throughput proportional to n, the number of interfaces.
