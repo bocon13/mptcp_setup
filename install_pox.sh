@@ -1,4 +1,4 @@
-cd ~/
+cd ~
 
 # Build RipL:
 sudo apt-get install -y python-setuptools
@@ -16,3 +16,7 @@ sudo python setup.py develop
 # Building POX:
 cd ~/
 git clone git://github.com/noxrepo/pox.git
+cd pox
+git checkout master
+
+cd ~
