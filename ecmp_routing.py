@@ -25,7 +25,7 @@ from mininet.cli import CLI
 from mininet.log import setLogLevel, info, warn, error, debug
 from mininet.util import custom, quietRun, run
 
-from dctopo import FatTreeTopo
+from topo import FatTreeTopo
 
 
 def FatTreeNet(k=4, bw=100, cpu=-1,  queue=100):
@@ -33,8 +33,8 @@ def FatTreeNet(k=4, bw=100, cpu=-1,  queue=100):
     global opts
 
     #pox_c = Popen("~/pox/pox.py --no-cli riplpox.riplpox --topo=ft,%s --routing=st --mode=proactive 1> pox.out 2> pox.out" % (k), shell=True)
-    pox_c = Popen("~/pox/pox.py riplpox.riplpox --topo=ft,%s --routing=hashed --mode=reactive  1> pox.out 2> pox.out" % (k), shell=True)
-
+    pox_c = Popen("~/pox/pox.py --no-cli riplpox.riplpox --topo=ft,%s --routing=hashed --mode=reactive  1> pox.out 2> pox.out" % (k), shell=True)
+    sleep(2) #wait a second for the controller to start
     topo = FatTreeTopo(k, speed=bw/1000.)
     #host = custom(CPULimitedHost, cpu=cpu)
     link = custom(TCLink, bw=bw, max_queue_size=queue)
@@ -83,6 +83,7 @@ def FatTreeTest():
     # wait for the switches to connect to the controller
     info('** Waiting for switches to connect to the controller\n')
     progress(5)
+    net.pingAll()
     CLI(net)
     net.stop()
     pox_c.terminate()
